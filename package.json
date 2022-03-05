@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon src/index.ts",
+    "dev": "nodemon src/index.ts",
+    "start": "ts-node src/index.ts",
     "test": "jest",
     "test:acceptance": "jest 'src/__tests__/UseCases'",
     "test:macro": "jest 'src/__tests__/Domain'"
