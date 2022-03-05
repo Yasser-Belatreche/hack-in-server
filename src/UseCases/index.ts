@@ -1,14 +1,13 @@
 import { ActivitiesServiceFacade } from "./ActivitiesService/ActivitiesService";
 import { AuthServiceFacade } from "./AuthService/AuthServiceFacade";
 
-import { FakeActivitiesGateway } from "../__tests__/__fakes__/Persistence/FakeActivitiesGateway";
-import { FakeActivitiesJoiningRequestsGateway } from "../__tests__/__fakes__/Persistence/FakeActivitiesJoiningRequestsGateway";
-import { FakeStudentsGateway } from "../__tests__/__fakes__/Persistence/FakeStudentsGateway";
+import { StudentsGateway } from "../Adapters/DrivenAdapters/Persistence/StudentsGateway/StudentsGateway";
+import { ActivitiesGateway } from "../Adapters/DrivenAdapters/Persistence/ActivitiesGateway/ActivitiesGateway";
+import { ActivitiesJoiningRequestsGateway } from "../Adapters/DrivenAdapters/Persistence/ActivitiesJoiningRequestsGateway/ActivitiesJoiningRequestsGateway";
 
-const studentsGateway = new FakeStudentsGateway();
-const activitiesGateway = new FakeActivitiesGateway();
-const activitiesJoiningRequestsGateway =
-  new FakeActivitiesJoiningRequestsGateway();
+const studentsGateway = new StudentsGateway();
+const activitiesGateway = new ActivitiesGateway();
+const activitiesJoiningRequestsGateway = new ActivitiesJoiningRequestsGateway();
 
 const authService = new AuthServiceFacade(studentsGateway);
 const activitiesService = new ActivitiesServiceFacade(

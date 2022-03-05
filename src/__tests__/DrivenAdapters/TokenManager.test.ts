@@ -1,4 +1,4 @@
-import {tokenManager} from '../../DrivenAdapters';
+import {tokenManager} from '../../Adapters/DrivenAdapters';
 
 describe('TokenManager', () => {
   it('should generate a unique Bearer token for each key', () => {

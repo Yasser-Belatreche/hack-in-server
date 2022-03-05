@@ -2,8 +2,9 @@ import express, { Express } from "express";
 import cors from "cors";
 
 import router from "./routes";
+import { connectToDb } from "../../DrivenAdapters/Persistence/_SETUP_/Mongo";
 
-const startExpressServer = () => {
+const startExpressServer = async () => {
   const app: Express = express();
 
   // configs
@@ -15,10 +16,16 @@ const startExpressServer = () => {
   // initialize the routes
   app.use("/api", router);
 
-  const PORT: number | string = process.env.PORT || 5000;
-  return app.listen(PORT, () => {
-    console.log(`server is listening on post ${PORT}`);
-  });
+  connectToDb()
+    .then(() => {
+      const PORT: number | string = process.env.PORT || 5000;
+      app.listen(PORT, () => {
+        console.log(`server is listening on post ${PORT}`);
+      });
+    })
+    .catch((error) => {
+      console.log("DB connection error", error);
+    });
 };
 
 export { startExpressServer };

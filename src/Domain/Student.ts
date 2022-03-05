@@ -1,4 +1,4 @@
-import {v4 as generateRandomId} from 'uuid';
+import { v4 as generateRandomId } from "uuid";
 
 type NonFunctionPropertyNames<T> = {
   [K in keyof T]: T[K] extends Function ? never : K;
@@ -11,8 +11,8 @@ export interface IStudent {
   name?: string;
   email: string;
   password: string;
-  sex?: 'male' | 'female';
-  newRegistred(name: string, sex: 'male' | 'female'): void;
+  sex?: "male" | "female";
+  newRegistred(name: string, sex: "male" | "female"): void;
   info(): NonFunctionProperties<IStudent>;
 }
 
@@ -21,21 +21,25 @@ class Student implements IStudent {
   name?: string;
   password: string;
   email: string;
-  sex?: 'male' | 'female';
+  sex?: "male" | "female";
 
   constructor(email: string, password: string) {
-    if (!this.isValidEmail(email)) throw new Error('unvalid email');
+    if (!this.isValidEmail(email)) throw new Error("unvalid email");
 
     this.email = email.toLowerCase().trim();
     this.password = password.trim();
   }
 
   public get userId(): string {
-    if (!this._userId) throw new Error('no userId');
+    if (!this._userId) throw new Error("no userId");
     return this._userId;
   }
 
-  newRegistred(name: string, sex: 'male' | 'female'): void {
+  public set userId(v) {
+    this._userId = v;
+  }
+
+  newRegistred(name: string, sex: "male" | "female"): void {
     this._userId = generateRandomId();
     this.name = name.trim();
     this.sex = sex;
@@ -58,4 +62,4 @@ class Student implements IStudent {
 
 const EMAIL_PATTERN = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-export {Student};
+export { Student };
