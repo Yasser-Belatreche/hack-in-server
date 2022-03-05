@@ -16,15 +16,18 @@ const startExpressServer = async () => {
   // initialize the routes
   app.use("/api", router);
 
+  const PORT: number | string = process.env.PORT || 5000;
+
   connectToDb()
-    .then(() => {
-      const PORT: number | string = process.env.PORT || 5000;
+    .then((client) => {
+      console.log("DB connected");
+
       app.listen(PORT, () => {
-        console.log(`server is listening on post ${PORT}`);
+        console.log(`server is running at ${PORT}`);
       });
     })
     .catch((error) => {
-      console.log("DB connection error", error);
+      console.log(`DB connections error, ${error}`);
     });
 };
 
