@@ -25,14 +25,14 @@
     "ts-node": "^10.6.0",
     "uuid": "^8.3.2",
     "@types/cors": "^2.8.12",
-    "@types/express": "^4.17.13"
-  },
-  "devDependencies": {
+    "@types/express": "^4.17.13",
     "@types/faker": "^6.6.6",
     "@types/jest": "^26.0.23",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/morgan": "^1.9.3",
-    "@types/uuid": "^8.3.4",
+    "@types/uuid": "^8.3.4"
+  },
+  "devDependencies": {
     "babel-jest": "^26.6.3",
     "babel-loader": "^8.2.3",
     "faker": "^6.6.6",
